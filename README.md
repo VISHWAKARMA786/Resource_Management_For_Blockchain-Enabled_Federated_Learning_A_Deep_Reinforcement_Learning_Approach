@@ -1,0 +1,2 @@
+# Resource_Management_For_Blockchain-Enabled_Federated_Learning_A_Deep_Reinforcement_Learning_Approach
+Resource Management For Blockchain-Enabled Federated Learning {: A Deep Reinforcement Learning Approach }
