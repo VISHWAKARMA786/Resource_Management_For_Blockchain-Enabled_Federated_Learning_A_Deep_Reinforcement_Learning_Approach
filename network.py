@@ -39,6 +39,8 @@ class DDQN(tf.keras.Model):
         advantage = self.advantage_output_layer(x)
         q_values = value + (advantage - tf.reduce_mean(advantage, axis=1, keepdims=True))
         return q_values
+        
+        pass
 
 
 class DDPG(tf.keras.Model):
