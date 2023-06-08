@@ -1,13 +1,16 @@
 import socket
 from network import DQN
+from client import Client
 
 # Define the central server class
+
+
 class CentralServer:
     def __init__(self, state_shape, action_space):
         self.clients = []
         self.model = DQN(state_shape, action_space)
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_address = ('192.168.1.25', 8888)
+        self.server_address = ('localhost', 8888)
         self.server_socket.bind(self.server_address)
 
     def start(self):
@@ -37,5 +40,11 @@ class CentralServer:
     def aggregate_weights(self, weights_list):
         # Code to perform aggregation of weights using federated averaging or other methods
 
-        
         pass
+
+    if __name__ == "__main__":
+    state_shape = ...
+    action_space = ...
+
+    central_server = CentralServer(state_shape, action_space)
+    central_server.start()
