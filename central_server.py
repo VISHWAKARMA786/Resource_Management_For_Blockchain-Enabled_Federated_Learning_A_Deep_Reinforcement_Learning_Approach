@@ -59,13 +59,13 @@ class CentralServer:
             client.local_training()
 
         self.aggregate_model_updates()
-        test_loss = self.evaluate_model(test_features)
+        test_loss = self.evaluate_model("test_features")
         print("Test Loss:", test_loss)
 
 
 if __name__ == "__main__":
-    state_shape = ...
-    action_space = ...
+    state_shape = (84, 84, 4)
+    action_space = 4
 
     central_server = CentralServer(state_shape, action_space)
     central_server.start()
