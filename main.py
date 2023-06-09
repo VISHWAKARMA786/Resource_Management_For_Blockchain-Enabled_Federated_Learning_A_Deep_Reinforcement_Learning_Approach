@@ -25,10 +25,10 @@ def preprocess_text(text):
 
 
 # step 3: Define State Shape
-state_shape = (100, 20)  # Examples values
+state_shape = (84, 84, 4)  # Examples values
 
 # Step 4: Define Action Space
-action_space = 400  # num_actions  # Example value
+action_space = 4  # num_actions  # Example value
 
 # Step 5: Load and Split Dataset
 news_data = pd.read_csv('abcnews-date-text.csv')
@@ -36,7 +36,7 @@ train_data, test_data = train_test_split(news_data, test_size=0.2, random_state=
 train_data, val_data = train_test_split(train_data, test_size=0.2, random_state=42)
 
 # Step 2: Convert Text to Numeric Representation (Example: TF-IDF)
-vectorizer = TfidfVectorizer(tokenizer=preprocess_text)
+vectorizer = TfidfVectorizer(tokenizer=preprocess_text, token_pattern=None)
 train_features = vectorizer.fit_transform(train_data)
 val_features = vectorizer.transform(val_data)
 test_features = vectorizer.transform(test_data)
@@ -108,8 +108,11 @@ def main():
 
 def evaluate_model(model, features):
     # Evaluate the model on the provided features
+    predictions = model.predict(features)
+
+
     # Return the loss or any other metrics of interest
-    return 0.0
+    return predictions
 
 
 if __name__ == "__main__":
